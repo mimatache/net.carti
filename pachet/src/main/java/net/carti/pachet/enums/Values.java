@@ -8,7 +8,7 @@ package net.carti.pachet.enums;
  */
 public enum Values {
     //Values
-    ACE(new ValueProperties(15, "As")),
+    ACE(new ValueProperties(15, 1, "As")),
     TWO(new ValueProperties(2, "Doi")),
     THREE(new ValueProperties(3, "Trei")),
     FOUR(new ValueProperties(4, "Patru")),
@@ -35,34 +35,74 @@ public enum Values {
     //Methods
 
 
-    public ValueProperties getProperties() {
+    private ValueProperties getProperties() {
         return properties;
     }
 
-    public static class ValueProperties{
+    public int getValue() {
+        return getProperties().getValue();
+    }
+
+    public void setValue(int value) {
+        this.getProperties().setValue(value);
+    }
+
+    public String getName() {
+        return getProperties().getName();
+    }
+
+    public void setName(String name) {
+        this.getProperties().setName(name);
+    }
+
+    public int getOrdinal() {
+        return getProperties().getOrdinal();
+    }
+
+    public void setOrdinal(int ordinal) {
+        this.getProperties().setOrdinal(ordinal);
+    }
+
+    private static class ValueProperties{
 
         private int value;
         private String name;
+        private int ordinal;
 
-        public ValueProperties(int value, String name) {
+        private ValueProperties(int value, int ordinal, String name) {
             this.value = value;
             this.name = name;
+            this.ordinal = ordinal;
         }
 
-        public int getValue() {
+        private ValueProperties(int value, String name) {
+            this.value = value;
+            this.name = name;
+            this.ordinal = value;
+        }
+
+        private int getValue() {
             return value;
         }
 
-        public void setValue(int value) {
+        private void setValue(int value) {
             this.value = value;
         }
 
-        public String getName() {
+        private String getName() {
             return name;
         }
 
-        public void setName(String name) {
+        private void setName(String name) {
             this.name = name;
+        }
+
+        private int getOrdinal() {
+            return ordinal;
+        }
+
+        public void setOrdinal(int ordinal) {
+            this.ordinal = ordinal;
         }
     }
 

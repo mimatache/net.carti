@@ -82,7 +82,7 @@ public class CardDeck {
     }
 
     public PlayingCard getCardOfValue(Values value) throws CardNotFoundException {
-        return cards.stream().filter(c -> c.getValue().equals(value)).findFirst().orElseThrow(() -> new CardNotFoundException(value));
+        return cards.stream().filter(c -> c.getRanking().equals(value)).findFirst().orElseThrow(() -> new CardNotFoundException(value));
     }
 
     public List<PlayingCard> getCards(){
@@ -92,7 +92,7 @@ public class CardDeck {
     }
 
     public List<PlayingCard> getAllCardsOfValue(Values value){
-        return cards.stream().filter(c -> c.getValue().equals(value)).collect(Collectors.toList());
+        return cards.stream().filter(c -> c.getRanking().equals(value)).collect(Collectors.toList());
     }
 
     public void addCard(PlayingCard card){

@@ -18,13 +18,13 @@ public class PlayingCard implements Comparable<PlayingCard> {
     private static final Logger LOGGER = CardLogger.getInstance(PlayingCard.class);
     //Instance variables
     private Suits suit;
-    private Values value;
+    private Values ranking;
 
     //Constructors
 
-    PlayingCard(Suits suit, Values value) {
+    PlayingCard(Suits suit, Values ranking) {
         this.suit = suit;
-        this.value = value;
+        this.ranking = ranking;
     }
 
     //Methods
@@ -36,12 +36,12 @@ public class PlayingCard implements Comparable<PlayingCard> {
         this.suit = suit;
     }
 
-    public Values getValue() {
-        return value;
+    public Values getRanking() {
+        return ranking;
     }
 
-    public void setValue(Values value) {
-        this.value = value;
+    public void setRanking(Values ranking) {
+        this.ranking = ranking;
     }
 
     @Override
@@ -50,23 +50,23 @@ public class PlayingCard implements Comparable<PlayingCard> {
         if (!(o instanceof PlayingCard)) return false;
         PlayingCard that = (PlayingCard) o;
         return getSuit() == that.getSuit() &&
-                getValue() == that.getValue();
+                getRanking() == that.getRanking();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getSuit(), getValue());
+        return Objects.hash(getSuit(), getRanking());
     }
 
     @Override
     public String toString() {
-        return String.format("%s de %s", this.getValue().getProperties().getName(), this.getSuit().getProperties().getName());
+        return String.format("%s de %s", this.getRanking().getName(), this.getSuit().getName());
     }
 
     @Override
     public int compareTo(PlayingCard card) {
         LOGGER.info("Comparing {} to {}", this.toString(), card.toString());
-        return (int)(this.suit.getProperties().getMultiplier()*this.value.getProperties().getValue() -
-                card.getSuit().getProperties().getMultiplier()*card.getValue().getProperties().getValue());
+        return (int)(this.suit.getMultiplier()*this.ranking.getValue() -
+                card.getSuit().getMultiplier()*card.getRanking().getValue());
     }
 }

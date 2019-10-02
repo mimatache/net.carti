@@ -18,16 +18,16 @@ public class CardNotFoundException extends Exception {
     //Constructors
 
     public CardNotFoundException(PlayingCard card) {
-        super(String.format("The card %s of %s was not found", card.getValue().getProperties().getName(),
-                card.getSuit().getProperties().getName()));
+        super(String.format("The card %s of %s was not found", card.getRanking().getName(),
+                card.getSuit().getName()));
     }
 
     public CardNotFoundException(Suits suit) {
-        super(String.format("No %s cards in the deck", suit.getProperties().getName()));
+        super(String.format("No %s cards in the deck", suit.getName()));
     }
 
     public CardNotFoundException(Values value) {
-        super(String.format("No %ss in the deck", value.getProperties().getName()));
+        super(String.format("No %ss in the deck", value.getName()));
     }
 
     //Methods

@@ -10,6 +10,7 @@
         <module>dealer</module>
         <module>jocuri</module>
         <module>logging</module>
+        <module>utils</module>
     </modules>
 
     <groupId>net.carti</groupId>

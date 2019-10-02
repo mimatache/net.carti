@@ -26,43 +26,67 @@ public enum Suits {
     //Methods
 
 
-    public SuiteProperties getProperties() {
+    private SuiteProperties getProperties() {
         return properties;
     }
 
-    public static class SuiteProperties{
+    public String getName() {
+        return getProperties().getName();
+    }
+
+    public void setName(String name) {
+        this.getProperties().setName(name);
+    }
+
+    public float getMultiplier() {
+        return getProperties().getMultiplier();
+    }
+
+    public void setMultiplier(float multiplier) {
+        this.getProperties().setMultiplier(multiplier);
+    }
+
+    public boolean isTrumpCard() {
+        return getProperties().isTrumpCard();
+    }
+
+    public void setTrumpCard(boolean trumpCard) {
+        this.getProperties().setTrumpCard(trumpCard);
+    }
+
+    private static class SuiteProperties{
 
         private String name;
         private float multiplier;
         private boolean trumpCard;
 
-        public SuiteProperties(String name, float multiplier, boolean trumpCard) {
+        private SuiteProperties(String name, float multiplier, boolean trumpCard) {
             this.name = name;
             this.multiplier = multiplier;
             this.trumpCard = trumpCard;
         }
 
-        public String getName() {
+        private String getName() {
             return name;
         }
 
-        public void setName(String name) {
+        private void setName(String name) {
             this.name = name;
         }
 
-        public float getMultiplier() {
+        private float getMultiplier() {
             return multiplier;
         }
 
-        public void setMultiplier(float multiplier) {
+        private void setMultiplier(float multiplier) {
             this.multiplier = multiplier;
         }
 
-        public boolean isTrumpCard() {
+        private boolean isTrumpCard() {
             return trumpCard;
         }
 
-        public void setTrumpCard(boolean trumpCard) {
+        private void setTrumpCard(boolean trumpCard) {
             this.trumpCard = trumpCard;
         }
     }

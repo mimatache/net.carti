@@ -2,10 +2,10 @@ package net.carti.jocuri.razboi;
 
 import net.carti.logging.CardLogger;
 import net.carti.pachet.PlayingCard;
-import net.carti.pachet.enums.Values;
 import net.carti.participants.CardPlayer;
 import net.carti.participants.Dealer;
 import net.carti.participants.TableTop;
+import net.carti.utils.resource.handler.FileManager;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -35,11 +35,11 @@ public class Razboi {
     }
 
     private static void play(CardPlayer player1, CardPlayer player2, TableTop tableTop) {
+        LOGGER.info(FileManager.readFromClassPath("start-logo.txt").asString());
         CardPlayer winner = null;
         int rounds = 1;
         while (winner == null) {
-            LOGGER.info("\n\n\n");
-            LOGGER.info("Round {}", rounds);
+            LOGGER.info("\nRound {}", rounds);
             rounds += 1;
             LOGGER.info("{} has {} cards", player1.getName(), player1.showCards().size());
             LOGGER.info("{} has {} cards", player2.getName(), player2.showCards().size());
@@ -51,11 +51,7 @@ public class Razboi {
                 winner = player1;
             }
         }
-        LOGGER.info("\n\n\n");
-        LOGGER.info("########################################");
-        LOGGER.info("########################################");
-        LOGGER.info("########################################");
-        LOGGER.info("########################################\n");
+        LOGGER.info(FileManager.readFromClassPath("win-logo.txt").asString());
         LOGGER.info("{} has won the game!", winner.getName());
     }
 
@@ -78,9 +74,9 @@ public class Razboi {
             LOGGER.info("{} won the round", player1.getName());
             player1.receiveCards(tableTop.giveCards());
         } else {
-            LOGGER.info("!!!!!!!!!!!!!!!!! RAZBOI !!!!!!!!!!!!!!!!!!");
+            LOGGER.info(FileManager.readFromClassPath("razboi-logo.txt").asString());
             PlayingCard drawCard = player1Cards.get(player1Cards.size()-1);
-            cardCount = drawCard.getValue() == Values.ACE? 1 : drawCard.getValue().getProperties().getValue();
+            cardCount = drawCard.getRanking().getOrdinal();
             draw(player1, player2, tableTop, cardCount);
         }
     }
