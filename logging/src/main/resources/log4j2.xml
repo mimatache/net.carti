@@ -1,0 +1,28 @@
+<Configuration status="info" name="net.carti" packages="net.carti">
+    <Properties>
+        <Property name="log-path">logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} %c{1}:%L %p %m%n}{ERROR=red, WARN=orange, INFO=white, DEBUG=green, TRACE=blue}"/>
+        </Console>
+        <File name="debug" fileName="${log-path}/debug.log" append="true">
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} %c{1}:%L %p %m%n}{ERROR=red, WARN=orange, INFO=white, DEBUG=green, TRACE=blue}"/>
+        </File>
+        <File name="info" fileName="${log-path}/info.log" append="true">
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} %c{1}:%L %p %m%n}{ERROR=red, WARN=orange, INFO=white, DEBUG=green, TRACE=blue}"/>
+        </File>
+        <File name="error" fileName="${log-path}/error.log" append="true">
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} %c{1}:%L %p %m%n}{ERROR=red, WARN=orange, INFO=white, DEBUG=green, TRACE=blue}"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="debug" level="debug"/>
+            <AppenderRef ref="info" level="info"/>
+            <AppenderRef ref="error" level="error"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
