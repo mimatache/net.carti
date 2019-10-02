@@ -37,6 +37,7 @@ public class Dealer extends CardPlayer{
         this.setDeck(newDeck);
     }
 
+
     public void dealCards(List<CardPlayer> players){
         for (CardPlayer player : players){
             try {
