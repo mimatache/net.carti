@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>resource-handler</module>
+        <module>logging</module>
     </modules>
 
 

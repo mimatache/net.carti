@@ -9,7 +9,6 @@
         <module>pachet</module>
         <module>dealer</module>
         <module>jocuri</module>
-        <module>logging</module>
         <module>utils</module>
     </modules>
 

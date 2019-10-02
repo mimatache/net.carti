@@ -24,7 +24,7 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>net.carti</groupId>
+            <groupId>net.carti.utils</groupId>
             <artifactId>logging</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
