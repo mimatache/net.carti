@@ -38,6 +38,7 @@ public class Razboi {
         CardPlayer winner = null;
         int rounds = 1;
         while (winner == null) {
+            LOGGER.info("\n\n\n");
             LOGGER.info("Round {}", rounds);
             rounds += 1;
             LOGGER.info("{} has {} cards", player1.getName(), player1.showCards().size());
@@ -50,13 +51,19 @@ public class Razboi {
                 winner = player1;
             }
         }
+        LOGGER.info("\n\n\n");
         LOGGER.info("########################################");
+        LOGGER.info("########################################");
+        LOGGER.info("########################################");
+        LOGGER.info("########################################\n");
         LOGGER.info("{} has won the game!", winner.getName());
     }
 
     private static void draw(CardPlayer player1, CardPlayer player2, TableTop tableTop, int cardCount){
         List<PlayingCard> player1Cards = player1.getCards(cardCount);
+        LOGGER.info("{} played {} cards", player1.getName(), player1Cards.size());
         List<PlayingCard> player2Cards = player2.getCards(cardCount);
+        LOGGER.info("{} played {} cards", player2.getName(), player2Cards.size());
         tableTop.receiveCards(player1Cards);
         tableTop.receiveCards(player2Cards);
         PlayingCard playingCard1 =  player1Cards.size() == 0 ? player1.getPreviousCards().getLastCard() : player1Cards.get(player1Cards.size()-1);
@@ -65,8 +72,10 @@ public class Razboi {
         LOGGER.info("{} played {}", player2.getName(), playingCard2);
         int comp = playingCard1.compareTo(playingCard2);
         if (comp < 0){
+            LOGGER.info("{} won the round", player2.getName());
             player2.receiveCards(tableTop.giveCards());
         } else if(comp > 0) {
+            LOGGER.info("{} won the round", player1.getName());
             player1.receiveCards(tableTop.giveCards());
         } else {
             LOGGER.info("!!!!!!!!!!!!!!!!! RAZBOI !!!!!!!!!!!!!!!!!!");
