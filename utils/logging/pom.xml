@@ -12,7 +12,7 @@
     <artifactId>logging</artifactId>
 
     <properties>
-        <logging.version>2.12.1</logging.version>
+        <logging.version>2.13.3</logging.version>
     </properties>
 
     <dependencies>
